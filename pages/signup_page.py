@@ -41,6 +41,19 @@ class SignupPage:
         )
         self.driver.execute_script("arguments[0].click();", button)
 
+    def signup_successful(self):
+        self.wait.until(
+            EC.presence_of_element_located(SignupLocators.SIGNUP_SUCCESSFUL)
+        )
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*SignupLocators.SIGNUP_SUCCESSFUL),
+        )
+
+        return alert_text
+
     # Optional methods you can enable if needed
     # def is_logout_link_visible(self):
     #     element = self.wait.until(EC.presence_of_element_located(SignupLocators.LOGOUT_BUTTON))
