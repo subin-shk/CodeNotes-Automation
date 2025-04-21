@@ -53,11 +53,3 @@ class SignupPage:
         )
 
         return alert_text
-
-    # Optional methods you can enable if needed
-    # def is_logout_link_visible(self):
-    #     element = self.wait.until(EC.presence_of_element_located(SignupLocators.LOGOUT_BUTTON))
-    #     return element.text
-
-    # def login_error_msg(self):
-    #     return self.wait.until(EC.presence_of_element_located(SignupLocators.LOGIN_ERROR)).text
