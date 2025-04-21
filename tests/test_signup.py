@@ -14,6 +14,5 @@ class TestSignup:
         signup_page.click_signup_submit_button()
 
         expected = "Welcome! You have signed up successfully."
-        # expected_url = "https://quotes.toscrape.com/login"
         actual = signup_page.signup_successful()
         assert actual == expected, "Failed: User was not able to sign up"
