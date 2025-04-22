@@ -51,5 +51,41 @@ class SignupPage:
             "return arguments[0].innerText;",
             self.driver.find_element(*SignupLocators.SIGNUP_SUCCESSFUL),
         )
+        return alert_text
+
+    def get_email_error(self):
+        self.wait.until(EC.presence_of_element_located(SignupLocators.EMAIL_ERROR))
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*SignupLocators.EMAIL_ERROR),
+        )
+
+        return alert_text
+
+    def get_password_mismatch_error(self):
+        self.wait.until(
+            EC.presence_of_element_located(SignupLocators.PASSWORD_MISMATCH_ERROR)
+        )
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*SignupLocators.PASSWORD_MISMATCH_ERROR),
+        )
+
+        return alert_text
+
+    def get_password_length_error(self):
+        self.wait.until(
+            EC.presence_of_element_located(SignupLocators.PASSWORD_SHORT_ERROR)
+        )
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*SignupLocators.PASSWORD_SHORT_ERROR),
+        )
 
         return alert_text

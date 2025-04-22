@@ -7,7 +7,7 @@ from pages.signup_page import SignupPage
 @pytest.fixture
 def setup():
     options = Options()
-    options.add_argument("--headless")  # Run Chrome in headless mode
+    options.add_argument("--headless") 
     options.add_argument("--disable-gpu")  # Disable GPU acceleration
     options.add_argument("--window-size=1920,1080")  # Optional, but useful
     options.add_argument("--no-sandbox")  # Good for CI environments
