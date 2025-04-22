@@ -2,7 +2,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators.signup_locators import SignupLocators
-
+from selenium.webdriver.common.by import By
 
 class SignupPage:
     def __init__(self, driver):
@@ -89,3 +89,7 @@ class SignupPage:
         )
 
         return alert_text
+    
+    # def get_all_errors(self):
+    #     error_elements = self.driver.find_elements(By.XPATH, "//*[contains(text(), 'error') or contains(@class, 'text-red-500') or contains(text(), 'doesn't match')]")
+    #     return [el.text.strip() for el in error_elements if el.is_displayed() and el.text.strip()]
