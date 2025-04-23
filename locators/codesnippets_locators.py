@@ -2,5 +2,11 @@ from selenium.webdriver.common.by import By
 
 
 class CodeSnippetsLocators:
+    CODESNIPPETS = (By.XPATH, '//a[text()="Code Snippets"]')
     NEW_CODESNIPPETS = (By.XPATH, "//a[text()='New Code Snippet']")
-
+    TITLE_INPUT = (By.ID, "code_snippet_title")
+    LANGUAGE_INPUT = (By.ID, "code_snippet_language")
+    DESCRIPTION_INPUT = (By.ID, "code_snippet_description")
+    CODE_INPUT = (By.ID, "code_snippet_code")
+    PRIVATE_CHECKBOX = (By.ID, "code_snippet_private")
+    CREATE = (By.NAME, "commit")
