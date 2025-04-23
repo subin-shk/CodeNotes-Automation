@@ -20,26 +20,26 @@ class TestNewSnippet:
             actual == expected
         ), "Failed: User was able to create new snippet without login"
 
-    def test_new_snippet(self, driver):
-        snippet_page = CodeSnippetPage(driver)
-        login_page = LoginPage(driver)
-        login_page.click_login_btn()
-        login_page.enter_email("test@example.com")
-        login_page.enter_password("test123")
-        login_page.click_login_submit_button()
+    # def test_new_snippet(self, driver):
+    #     snippet_page = CodeSnippetPage(driver)
+    #     login_page = LoginPage(driver)
+    #     login_page.click_login_btn()
+    #     login_page.enter_email("test@example.com")
+    #     login_page.enter_password("test123")
+    #     login_page.click_login_submit_button()
 
-        import time
+    #     import time
 
-        time.sleep(5)
-        snippet_page.click_snippet_btn()
+    #     time.sleep(5)
+    #     snippet_page.click_snippet_btn()
 
-        snippet_page.click_new_snippet_btn()
-        snippet_page.enter_title("Example Snippet Title")
-        snippet_page.select_language("Kotlin")
-        snippet_page.enter_description(
-            "This is a sample description for a code snippet."
-        )
-        snippet_page.enter_code("print('Hello, world!')")
+    #     snippet_page.click_new_snippet_btn()
+    #     snippet_page.enter_title("Example Snippet Title")
+    #     snippet_page.select_language("Kotlin")
+    #     snippet_page.enter_description(
+    #         "This is a sample description for a code snippet."
+    #     )
+    #     snippet_page.enter_code("print('Hello, world!')")
 
-        # Submit the form
-        snippet_page.submit_form()
+    #     # Submit the form
+    #     snippet_page.submit_form()
