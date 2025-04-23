@@ -34,12 +34,16 @@ class LoginPage:
         )
         self.driver.execute_script("arguments[0].click();", button)
 
-    def login_successful(self):
-        self.wait.until(EC.presence_of_element_located(LoginLocators.LOGIN_SUCCESSFUL))
+    def login_alert(self):
+        self.wait.until(EC.presence_of_element_located(LoginLocators.LOGIN_ALERT))
 
         # Use JavaScript Executor to retrieve the inner text of the element
         alert_text = self.driver.execute_script(
             "return arguments[0].innerText;",
-            self.driver.find_element(*LoginLocators.LOGIN_SUCCESSFUL),
+            self.driver.find_element(*LoginLocators.LOGIN_ALERT),
         )
         return alert_text
+    
+
+
+        

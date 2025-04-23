@@ -6,4 +6,4 @@ class LoginLocators:
     EMAIL_INPUT = (By.ID, "user_email")
     PASSWORD_INPUT = (By.ID, "user_password")
     LOGIN_SUBMIT = (By.NAME, "commit")
-    LOGIN_SUCCESSFUL = (By.XPATH, '//div[@role="alert"]')
+    LOGIN_ALERT = (By.XPATH, '//div[@role="alert"]')
