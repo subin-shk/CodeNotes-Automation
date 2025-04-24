@@ -46,17 +46,17 @@ class TestNewSnippet:
         # Submit the form
         snippet_page.submit_form()
 
-    # def test_view_card(self, driver):
-    #     snippet_page = CodeSnippetPage(driver)
-    #     login_page = LoginPage(driver)
-    #     login_page.click_login_btn()
-    #     login_page.enter_email("test@example.com")
-    #     login_page.enter_password("test123")
-    #     login_page.click_login_submit_button()
+    def test_view_card(self, driver):
+        snippet_page = CodeSnippetPage(driver)
+        login_page = LoginPage(driver)
+        login_page.click_login_btn()
+        login_page.enter_email("test@example.com")
+        login_page.enter_password("test123")
+        login_page.click_login_submit_button()
 
-    #     import time
+        import time
 
-    #     time.sleep(5)
-    #     snippet_page.click_snippet_btn()
-    #     time.sleep(5)
-    #     snippet_page.view_card()
+        time.sleep(5)
+        snippet_page.click_snippet_btn()
+        time.sleep(5)
+        snippet_page.view_card()
