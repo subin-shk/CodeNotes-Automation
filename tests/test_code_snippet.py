@@ -36,7 +36,7 @@ class TestNewSnippet:
         snippet_page.click_new_snippet_btn()
         snippet_page.enter_title("Example Snippet Title")
 
-        snippet_page.select_language()
+        snippet_page.select_language("Kotlin")
         # snippet_page.select_language("Kotlin")
         snippet_page.enter_description(
             "This is a sample description for a code snippet."

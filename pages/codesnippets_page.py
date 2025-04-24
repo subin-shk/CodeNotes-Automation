@@ -58,37 +58,14 @@ class CodeSnippetPage:
     #     # element.click()
     #     element.send_keys("Kotlin")
 
-    def select_language(self):
-        try:
-            # Wait for the dropdown to be clickable
-            dropdown_element = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable(CodeSnippetsLocators.LANGUAGE_INPUT)
-            )
-
-            # Try using the Select method first
-            select = Select(dropdown_element)
-            select.select_by_visible_text("Kotlin")
-        except Exception as e:
-            print(f"[WARN] Standard select failed: {e}. Trying JS fallback...")
-
-            # JavaScript fallback in case of Turbo or rendering issues
-            try:
-                self.driver.execute_script(
-                    """
-                    var select = document.getElementById('code_snippet_language');
-                    var options = select.options;
-                    for (var i = 0; i < options.length; i++) {
-                        if (options[i].text === 'Kotlin') {
-                            select.selectedIndex = i;
-                            break;
-                        }
-                    }
-                    select.dispatchEvent(new Event('change'));
-                """
-                )
-            except JavascriptException as js_err:
-                print(f"[ERROR] JavaScript execution failed: {js_err}")
-                raise
+    # def select_language(self):
+    def select_language(self, language):
+        language_element = self.wait.until(
+            EC.presence_of_element_located(CodeSnippetsLocators.LANGUAGE_INPUT)
+        )
+        self.driver.execute_script(
+            f"arguments[0].value = '{language}';", language_element
+        )
 
     def enter_description(self, description):
         element = self.wait.until(
