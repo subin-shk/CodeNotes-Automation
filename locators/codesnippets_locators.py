@@ -10,3 +10,4 @@ class CodeSnippetsLocators:
     CODE_INPUT = (By.ID, "code_snippet_code")
     PRIVATE_CHECKBOX = (By.ID, "code_snippet_private")
     CREATE = (By.NAME, "commit")
+    VIEW = (By.XPATH, "//div/a[text()='View']")
