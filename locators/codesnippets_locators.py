@@ -11,3 +11,7 @@ class CodeSnippetsLocators:
     PRIVATE_CHECKBOX = (By.ID, "code_snippet_private")
     CREATE = (By.NAME, "commit")
     VIEW = (By.XPATH, "//div/a[text()='View']")
+    TAG_CHECKBOX_BY_LABEL = lambda label: (
+        By.XPATH,
+        f"//label[contains(normalize-space(), '{label}')]/preceding-sibling::input[@type='checkbox']",
+    )

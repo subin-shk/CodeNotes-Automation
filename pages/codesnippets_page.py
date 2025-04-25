@@ -81,6 +81,13 @@ class CodeSnippetPage:
         )
         self.driver.execute_script("arguments[0].value = arguments[1];", element, code)
 
+    def select_tag_by_label(self, label_text):
+        locator = CodeSnippetsLocators.TAG_CHECKBOX_BY_LABEL(label_text)
+        checkbox = self.wait.until(EC.presence_of_element_located(locator))
+        if not checkbox.is_selected():
+            self.driver.execute_script("arguments[0].click();", checkbox)
+
+
     def submit_form(self):
         try:
             create_button = self.wait.until(
@@ -101,17 +108,15 @@ class CodeSnippetPage:
                 print(f"[ERROR] JS fallback failed: {js_err}")
                 raise
 
-    def get_success_message(self):
-        try:
-            # Adjust the selector for the success message based on your application
-            success_message = self.wait.until(
-                EC.presence_of_element_located(
-                    (By.CLASS_NAME, "notice")
-                )  # Modify this according to your app
-            )
-            return success_message.text
-        except:
-            return None
+    def alert(self):
+        self.wait.until(EC.presence_of_element_located(LoginLocators.LOGIN_ALERT))
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*LoginLocators.LOGIN_ALERT),
+        )
+        return alert_text
 
     def view_card(self):
         view = self.driver.find_element(*CodeSnippetsLocators.VIEW)

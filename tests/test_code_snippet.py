@@ -37,14 +37,18 @@ class TestNewSnippet:
         snippet_page.enter_title("Example Snippet Title")
 
         snippet_page.select_language("Kotlin")
-        # snippet_page.select_language("Kotlin")
         snippet_page.enter_description(
             "This is a sample description for a code snippet."
         )
         snippet_page.enter_code("print('Hello, world!')")
-
-        # Submit the form
+        snippet_page.select_tag_by_label("hello world")
+        snippet_page.select_tag_by_label("1")
+        snippet_page.select_tag_by_label("खुला स्रोत")
         snippet_page.submit_form()
+
+        expected = "Code snippet was successfully created."
+        actual = login_page.login_alert()
+        assert actual == expected, "Failed: User was not able to create new snippet"
 
     def test_view_card(self, driver):
         snippet_page = CodeSnippetPage(driver)
