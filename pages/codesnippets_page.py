@@ -87,7 +87,6 @@ class CodeSnippetPage:
         if not checkbox.is_selected():
             self.driver.execute_script("arguments[0].click();", checkbox)
 
-
     def submit_form(self):
         try:
             create_button = self.wait.until(
@@ -121,3 +120,7 @@ class CodeSnippetPage:
     def view_card(self):
         view = self.driver.find_element(*CodeSnippetsLocators.VIEW)
         self.driver.execute_script("arguments[0].click();", view)
+
+    def get_error_for_field(self, field_id):
+        locator = CodeSnippetsLocators.error_for_field(field_id)
+        return self.driver.find_element(*locator).text

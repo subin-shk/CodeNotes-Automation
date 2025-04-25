@@ -1,9 +1,12 @@
 import pytest
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 from pages.login_page import LoginPage
 from pages.codesnippets_page import CodeSnippetPage
-
+from locators.codesnippets_locators import CodeSnippetsLocators
 from locators.login_locators import LoginLocators
 
 
@@ -49,6 +52,8 @@ class TestNewSnippet:
         expected = "Code snippet was successfully created."
         actual = login_page.login_alert()
         assert actual == expected, "Failed: User was not able to create new snippet"
+
+
 
     def test_view_card(self, driver):
         snippet_page = CodeSnippetPage(driver)

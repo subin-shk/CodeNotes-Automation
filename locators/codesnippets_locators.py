@@ -15,3 +15,10 @@ class CodeSnippetsLocators:
         By.XPATH,
         f"//label[contains(normalize-space(), '{label}')]/preceding-sibling::input[@type='checkbox']",
     )
+
+    @staticmethod
+    def error_for_field(field_id):
+        return (
+            By.CSS_SELECTOR,
+            f"#{field_id} ~ .error, #{field_id} ~ .text-red-500, #{field_id} ~ .field-error",
+        )

@@ -5,6 +5,9 @@ class KanjiPage:
     def __init__(self, driver):
         self.driver = driver
 
+    def go_to_all_kanji(self):
+        self.driver.find_element(*KanjiPageLocators.NAV_ALL_KANJI).click()
+
     def go_to_kanji_for_beginners(self):
         self.driver.find_element(*KanjiPageLocators.NAV_KANJI_FOR_BEGINNERS).click()
 
