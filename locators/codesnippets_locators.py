@@ -11,6 +11,9 @@ class CodeSnippetsLocators:
     PRIVATE_CHECKBOX = (By.ID, "code_snippet_private")
     CREATE = (By.NAME, "commit")
     VIEW = (By.XPATH, "//div/a[text()='View']")
+    TITLE_ERROR = (By.XPATH, "//input[@id='code_snippet_title']/following::p[1]")
+    LANGUAGE_ERROR = (By.XPATH, "//select[@id='code_snippet_language']/following::p")
+    CODE_ERROR = (By.XPATH, "//textarea[@id='code_snippet_code']/following::p")
     TAG_CHECKBOX_BY_LABEL = lambda label: (
         By.XPATH,
         f"//label[contains(normalize-space(), '{label}')]/preceding-sibling::input[@type='checkbox']",

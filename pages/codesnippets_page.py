@@ -124,4 +124,40 @@ class CodeSnippetPage:
     def get_error_for_field(self, field_id):
         locator = CodeSnippetsLocators.error_for_field(field_id)
         return self.driver.find_element(*locator).text
-# 
+
+    def get_title_error(self):
+        self.wait.until(
+            EC.presence_of_element_located(CodeSnippetsLocators.TITLE_ERROR)
+        )
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*CodeSnippetsLocators.TITLE_ERROR),
+        )
+
+        return alert_text
+
+    def get_language_error(self):
+        self.wait.until(
+            EC.presence_of_element_located(CodeSnippetsLocators.LANGUAGE_ERROR)
+        )
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*CodeSnippetsLocators.LANGUAGE_ERROR),
+        )
+
+        return alert_text
+
+    def get_code_error(self):
+        self.wait.until(EC.presence_of_element_located(CodeSnippetsLocators.CODE_ERROR))
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*CodeSnippetsLocators.CODE_ERROR),
+        )
+
+        return alert_text
