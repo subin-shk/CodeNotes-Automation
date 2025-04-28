@@ -124,3 +124,4 @@ class CodeSnippetPage:
     def get_error_for_field(self, field_id):
         locator = CodeSnippetsLocators.error_for_field(field_id)
         return self.driver.find_element(*locator).text
+# 
