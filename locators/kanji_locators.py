@@ -8,3 +8,4 @@ class KanjiPageLocators:
     SEARCH_BUTTON = (By.XPATH, "//input[@value='Search']")
     KANJI_CARDS = (By.CLASS_NAME, "kanji-card")
     SEARCH_RESULT=(By.XPATH,"//p/span")
+    ALERT = (By.XPATH, '//div[@role="alert"]')
