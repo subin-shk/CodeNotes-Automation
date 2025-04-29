@@ -10,9 +10,12 @@ from locators.codesnippets_locators import CodeSnippetsLocators
 from locators.login_locators import LoginLocators
 
 
-class Kanji:
+class TestKanji:
 
     def test_search_kanji(self, driver):
         kanji_page = KanjiPage(driver)
         kanji_page.go_to_all_kanji()
         kanji_page.search_kanji("river")
+        # expected = "river"
+        # actual = kanji_page.search_result()
+        # assert actual == expected, f"Failed: Expected '{expected}', but got '{actual}'"

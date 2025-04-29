@@ -7,3 +7,4 @@ class KanjiPageLocators:
     SEARCH_INPUT = (By.ID, "query")
     SEARCH_BUTTON = (By.XPATH, "//input[@value='Search']")
     KANJI_CARDS = (By.CLASS_NAME, "kanji-card")
+    SEARCH_RESULT=(By.XPATH,"//p/span")
