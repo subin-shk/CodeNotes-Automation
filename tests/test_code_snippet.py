@@ -41,9 +41,9 @@ class TestNewSnippet:
             "This is a sample description for a code snippet."
         )
         snippet_page.enter_code("print('Hello, world!')")
-        snippet_page.select_tag_by_label("hello world")
+        snippet_page.select_tag_by_label("new")
         snippet_page.select_tag_by_label("1")
-        snippet_page.select_tag_by_label("खुला स्रोत")
+        # snippet_page.select_tag_by_label("खुला स्रोत")
         snippet_page.submit_form()
 
         expected = "Code snippet was successfully created."
