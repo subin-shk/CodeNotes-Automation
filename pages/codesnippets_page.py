@@ -161,7 +161,7 @@ class CodeSnippetPage:
         )
 
         return alert_text
-    
+
     def alert(self):
         self.wait.until(EC.presence_of_element_located(LoginLocators.LOGIN_ALERT))
 
