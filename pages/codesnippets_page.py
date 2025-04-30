@@ -161,3 +161,13 @@ class CodeSnippetPage:
         )
 
         return alert_text
+    
+    def alert(self):
+        self.wait.until(EC.presence_of_element_located(LoginLocators.LOGIN_ALERT))
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        alert_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*LoginLocators.LOGIN_ALERT),
+        )
+        return alert_text

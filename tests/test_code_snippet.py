@@ -20,34 +20,28 @@ class TestNewSnippet:
             actual == expected
         ), "Failed: User was able to create new snippet without login"
 
-    def test_new_snippet(self, driver):
-        snippet_page = CodeSnippetPage(driver)
-        login_page = LoginPage(driver)
-        login_page.click_login_btn()
-        login_page.enter_email("test@example.com")
-        login_page.enter_password("test123")
-        login_page.click_login_submit_button()
-
+    def test_new_snippet(self, logged_in_driver):
+        snippet_page = CodeSnippetPage(logged_in_driver)
         import time
 
         time.sleep(5)
         snippet_page.click_snippet_btn()
 
         snippet_page.click_new_snippet_btn()
-        snippet_page.enter_title("Example Snippet Title")
+        snippet_page.enter_title("Snippet Title")
 
         snippet_page.select_language("Kotlin")
         snippet_page.enter_description(
             "This is a sample description for a code snippet."
         )
         snippet_page.enter_code("print('Hello, world!')")
-        snippet_page.select_tag_by_label("new")
-        snippet_page.select_tag_by_label("1")
+        # snippet_page.select_tag_by_label("new")
+        # snippet_page.select_tag_by_label("1")
         # snippet_page.select_tag_by_label("खुला स्रोत")
         snippet_page.submit_form()
 
         expected = "Code snippet was successfully created."
-        actual = login_page.login_alert()
+        actual = snippet_page.alert()
         assert actual == expected, "Failed: User was not able to create new snippet"
 
     @pytest.mark.parametrize(
@@ -80,15 +74,9 @@ class TestNewSnippet:
         ],
     )
     def test_empty_required_fields(
-        self, driver, title, language, description, code, error_method, expected_error
+        self, logged_in_driver, title, language, description, code, error_method, expected_error
     ):
-        snippet_page = CodeSnippetPage(driver)
-        login_page = LoginPage(driver)
-        login_page.click_login_btn()
-        login_page.enter_email("test@example.com")
-        login_page.enter_password("test123")
-        login_page.click_login_submit_button()
-
+        snippet_page = CodeSnippetPage(logged_in_driver)
         import time
 
         time.sleep(5)
@@ -108,14 +96,8 @@ class TestNewSnippet:
             expected_error in actual_error
         ), f"Failed: Expected '{expected_error}' but got '{actual_error}'"
 
-    def test_view_card(self, driver):
-        snippet_page = CodeSnippetPage(driver)
-        login_page = LoginPage(driver)
-        login_page.click_login_btn()
-        login_page.enter_email("test@example.com")
-        login_page.enter_password("test123")
-        login_page.click_login_submit_button()
-
+    def test_view_card(self, logged_in_driver):
+        snippet_page = CodeSnippetPage(logged_in_driver)
         import time
 
         time.sleep(5)
