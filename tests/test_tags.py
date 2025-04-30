@@ -18,7 +18,7 @@ class TestTags:
         actual = tags_page.tags_title()
         assert expected == actual, f"Failed: Expected {expected} but got {actual}"
 
-    @pytest.mark.skip(reason="Skipping this because there may be name conflict")
+    @pytest.mark.skip(reason="Skipping this because there might already be tags with same name from previous push")
     def test_new_tag(self, driver):
         tags_page = TagsPage(driver)
         tags_page.click_tag_btn()
@@ -40,7 +40,7 @@ class TestTags:
         assert expected == actual, f"Failed: Expected {expected} but got {actual}"
 
     @pytest.mark.skip(
-        reason="Skipping this because there the tag might have already been edited in previous push or may be name conflict"
+        reason="Skipping this because the tag might have already been edited in previous push"
     )
     def test_edit_tag(self, driver):
         tags_page = TagsPage(driver)
