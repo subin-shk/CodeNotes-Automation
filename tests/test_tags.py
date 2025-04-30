@@ -9,7 +9,7 @@ from locators.kanji_locators import KanjiPageLocators
 import time
 
 
-class TestKanji:
+class TestTags:
 
     def test_nav_tag(self, driver):
         tags_page = TagsPage(driver)
