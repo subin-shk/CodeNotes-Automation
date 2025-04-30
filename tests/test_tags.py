@@ -28,3 +28,27 @@ class TestKanji:
         expected = "Tag was successfully created."
         actual = tags_page.alert()
         assert expected == actual, f"Failed: Expected {expected} but got {actual}"
+
+    def test_duplicate_tag_name(self, driver):
+        tags_page = TagsPage(driver)
+        tags_page.click_tag_btn()
+        tags_page.click_new_tag()
+        tags_page.send_name("New Tagg")
+        tags_page.submit_name()
+        expected = "Name has already been taken"
+        actual = tags_page.error_message()
+        assert expected == actual, f"Failed: Expected {expected} but got {actual}"
+
+    def test_edit_tag(self, driver):
+        tags_page = TagsPage(driver)
+        tags_page.click_tag_btn()
+        # tags_page.click_edit_button_for_tag("New Tagg")
+        
+        tags_page.click_edit_button_for_tag("Tags")
+        tags_page.clear_name_field()
+        tags_page.send_name(f"Edited Tagg")
+        tags_page.submit_name()
+
+        expected = "Tag was successfully updated."
+        actual = tags_page.alert()
+        assert actual == expected, "Failed to update tag"

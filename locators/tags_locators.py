@@ -8,3 +8,4 @@ class TagsLocators:
     NAME = (By.ID, "tag_name")
     SUBMIT = (By.NAME, "commit")
     ALERT = (By.XPATH, '//div[@role="alert"]')
+    TAG_VALIDATION = (By.XPATH, "//p[@class='mt-2 text-red-500 text-sm']")

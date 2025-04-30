@@ -22,6 +22,10 @@ class TagsPage:
         element = self.wait.until(EC.presence_of_element_located(TagsLocators.NEW_TAG))
         self.driver.execute_script("arguments[0].click();", element)
 
+    def clear_name_field(self):
+        element = self.wait.until(EC.presence_of_element_located(TagsLocators.NAME))
+        self.driver.execute_script("arguments[0].value = '';", element)
+
     def send_name(self, name):
         element = self.wait.until(EC.presence_of_element_located(TagsLocators.NAME))
         self.driver.execute_script("arguments[0].value = arguments[1];", element, name)
@@ -39,3 +43,19 @@ class TagsPage:
             self.driver.find_element(*TagsLocators.ALERT),
         )
         return alert_text
+
+    def error_message(self):
+        self.wait.until(EC.presence_of_element_located(TagsLocators.TAG_VALIDATION))
+
+        # Use JavaScript Executor to retrieve the inner text of the element
+        validation_text = self.driver.execute_script(
+            "return arguments[0].innerText;",
+            self.driver.find_element(*TagsLocators.TAG_VALIDATION),
+        )
+        return validation_text
+
+    def click_edit_button_for_tag(self, tag_name):
+        xpath = f"//td[div[text()='{tag_name}']]/following-sibling::td//a[contains(text(),'Edit')]"
+        element = self.wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        self.driver.execute_script("arguments[0].click();", element)
