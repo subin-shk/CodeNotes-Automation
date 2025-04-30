@@ -43,8 +43,8 @@ class TestKanji:
         tags_page = TagsPage(driver)
         tags_page.click_tag_btn()
         # tags_page.click_edit_button_for_tag("New Tagg")
-        
-        tags_page.click_edit_button_for_tag("Tags")
+
+        tags_page.click_edit_button_for_tag("new")
         tags_page.clear_name_field()
         tags_page.send_name(f"Edited Tagg")
         tags_page.submit_name()
