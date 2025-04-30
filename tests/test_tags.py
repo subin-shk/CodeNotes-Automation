@@ -23,7 +23,7 @@ class TestKanji:
         tags_page = TagsPage(driver)
         tags_page.click_tag_btn()
         tags_page.click_new_tag()
-        tags_page.send_name("New Tagg")
+        tags_page.send_name("New tag2")
         tags_page.submit_name()
         expected = "Tag was successfully created."
         actual = tags_page.alert()
