@@ -25,3 +25,13 @@ class CodeSnippetsLocators:
             By.CSS_SELECTOR,
             f"#{field_id} ~ .error, #{field_id} ~ .text-red-500, #{field_id} ~ .field-error",
         )
+
+    @staticmethod
+    def VIEW_BUTTON_BY_TITLE(snippet_title):
+        return (
+            By.XPATH,
+            f"//h5[contains(text(), '{snippet_title}')]/ancestor::div[contains(@class,'card')]//button[contains(text(),'View')]",
+        )
+
+    VIEW = (By.XPATH, "//div/a[text()='View']")
+    EDIT = (By.XPATH, "//div/a[text()='Edit']")

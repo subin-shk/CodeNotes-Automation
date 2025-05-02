@@ -107,16 +107,6 @@ class CodeSnippetPage:
                 print(f"[ERROR] JS fallback failed: {js_err}")
                 raise
 
-    def alert(self):
-        self.wait.until(EC.presence_of_element_located(LoginLocators.LOGIN_ALERT))
-
-        # Use JavaScript Executor to retrieve the inner text of the element
-        alert_text = self.driver.execute_script(
-            "return arguments[0].innerText;",
-            self.driver.find_element(*LoginLocators.LOGIN_ALERT),
-        )
-        return alert_text
-
     def view_card(self):
         view = self.driver.find_element(*CodeSnippetsLocators.VIEW)
         self.driver.execute_script("arguments[0].click();", view)
@@ -171,3 +161,28 @@ class CodeSnippetPage:
             self.driver.find_element(*LoginLocators.LOGIN_ALERT),
         )
         return alert_text
+
+    # def click_view_by_title(self, snippet_title):
+    #     view_button_locator = CodeSnippetsLocators.VIEW_BUTTON_BY_TITLE(snippet_title)
+    #     view_button = self.wait.until(EC.element_to_be_clickable(view_button_locator))
+    #     self.driver.execute_script("arguments[0].click();", view_button)
+
+    def click_view(self):
+        view_buttons = self.wait.until(
+            EC.presence_of_all_elements_located(CodeSnippetsLocators.VIEW)
+        )
+        if view_buttons:
+            self.driver.execute_script(
+                "arguments[0].scrollIntoView(true);", view_buttons[0]
+            )
+            self.driver.execute_script("arguments[0].click();", view_buttons[0])
+        else:
+            raise Exception("No view buttons found.")
+
+    def click_edit(self):
+
+        edit_button = self.wait.until(
+            EC.presence_of_element_located(CodeSnippetsLocators.EDIT)
+        )
+        self.driver.execute_script("arguments[0].click();", edit_button)
+        

@@ -5,6 +5,7 @@ from pages.login_page import LoginPage
 from pages.codesnippets_page import CodeSnippetPage
 
 from locators.login_locators import LoginLocators
+import time
 
 
 class TestCodeSnippet:
@@ -74,7 +75,14 @@ class TestCodeSnippet:
         ],
     )
     def test_empty_required_fields(
-        self, logged_in_driver, title, language, description, code, error_method, expected_error
+        self,
+        logged_in_driver,
+        title,
+        language,
+        description,
+        code,
+        error_method,
+        expected_error,
     ):
         snippet_page = CodeSnippetPage(logged_in_driver)
         import time
@@ -98,9 +106,20 @@ class TestCodeSnippet:
 
     def test_view_card(self, logged_in_driver):
         snippet_page = CodeSnippetPage(logged_in_driver)
-        import time
 
         time.sleep(5)
         snippet_page.click_snippet_btn()
         time.sleep(5)
         snippet_page.view_card()
+
+    def test_edit_code_snippet_without_login(self, driver):
+        snippet_page = CodeSnippetPage(driver)
+        snippet_page.click_snippet_btn()
+        snippet_page.click_view()
+        snippet_page.click_edit()
+
+        expected_result = "You need to sign in or sign up before continuing."
+        actual_result = snippet_page.alert()
+        assert (
+            actual_result == expected_result
+        ), f"Expected '{expected_result}', but got'{actual_result}'"
