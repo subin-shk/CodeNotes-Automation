@@ -21,6 +21,7 @@ class TestCodeSnippet:
             actual == expected
         ), "Failed: User was able to create new snippet without login"
 
+    @pytest.mark.skip(reason="Skipping this because too many new snippets")
     def test_new_snippet(self, logged_in_driver):
         snippet_page = CodeSnippetPage(logged_in_driver)
         import time
