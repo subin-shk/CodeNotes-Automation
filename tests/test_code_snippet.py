@@ -7,7 +7,7 @@ from pages.codesnippets_page import CodeSnippetPage
 from locators.login_locators import LoginLocators
 
 
-class TestNewSnippet:
+class TestCodeSnippet:
     def test_new_snippet_without_login(self, driver):
         # driver, signup_page, login_page = setup
         snippet_page = CodeSnippetPage(driver)
