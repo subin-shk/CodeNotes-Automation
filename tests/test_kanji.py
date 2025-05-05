@@ -36,3 +36,6 @@ class TestKanji:
         expected = f"Please enter a search term"
 
         assert actual == expected, f"Expected: {expected}, but got: {actual}"
+
+
+    def test_kanji_card

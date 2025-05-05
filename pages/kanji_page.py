@@ -44,4 +44,9 @@ class KanjiPage:
             EC.presence_of_element_located(KanjiPageLocators.SEARCH_RESULT)
         )
         return result_element.text.strip().lower()
+
+    def click_kanji_card(self):
+        self.wait.until(
+            EC.element_to_be_clickable(KanjiPageLocators.KANJI_CARDS)
+        ).click()
         
