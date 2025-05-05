@@ -49,3 +49,5 @@ class TestKanji:
         kanji_page.go_to_all_kanji()
         kanji_page.click_kanji_card()
         assert kanji_page.mnemonics_presence(), "Failed: Kanji detail page do not have mneumonics"
+        
+        

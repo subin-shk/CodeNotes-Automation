@@ -19,9 +19,11 @@ class DashboardPage:
 
     def search_codesnippet(self, term):
         element = self.wait.until(
-            EC.presence_of_all_elements_located(DashboardLocators.SEARCH)
+            EC.presence_of_element_located(DashboardLocators.SEARCH)
         )
         self.driver.execute_script("arguments[0].value=arguments[1]", element, term)
+
+
 
     def apply(self):
         element = self.wait.until(
@@ -40,7 +42,7 @@ class DashboardPage:
             self.driver.execute_script("arguments[0].click();", element)
 
     def select_a_z_sort(self, text):
-        element = WebDriverWait(self.driver, 10).until(
+        element = self.wait.until(
             EC.presence_of_element_located(DashboardLocators.A_Z_SORT)
         )
         self.driver.execute_script("arguments[0].value = arguments[1];", element, text)
@@ -50,3 +52,14 @@ class DashboardPage:
             EC.presence_of_element_located(DashboardLocators.OLDEST_SORT)
         )
         self.driver.execute_script("arguments[0].click();", element)
+
+    def search_result(self):
+        result = self.wait.until(
+            EC.presence_of_element_located(DashboardLocators.SEARCH_RESULT)
+        )
+        return self.driver.execute_script("return arguments[0].innerText;", result)
+    def search_message(self):
+        result = self.wait.until(
+            EC.presence_of_element_located(DashboardLocators.SEARCH_MESSAGE)
+        )
+        return self.driver.execute_script("return arguments[0].innerText;", result)

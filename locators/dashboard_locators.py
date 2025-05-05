@@ -9,3 +9,5 @@ class DashboardLocators:
     APPLY = (By.NAME, "commit")
     OLDEST_SORT = (By.XPATH, '//option[@value="oldest"]')
     A_Z_SORT = (By.XPATH, '//option[@value="a-z"]')
+    SEARCH_RESULT = (By.XPATH, "//h3/a")
+    SEARCH_MESSAGE=(By.XPATH,'//input[@name="commit"]/following::h3')
