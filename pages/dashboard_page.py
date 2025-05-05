@@ -22,11 +22,31 @@ class DashboardPage:
             EC.presence_of_all_elements_located(DashboardLocators.SEARCH)
         )
         self.driver.execute_script("arguments[0].value=arguments[1]", element, term)
-        
+
     def apply(self):
         element = self.wait.until(
             EC.presence_of_element_located(DashboardLocators.APPLY)
         )
-        self.driver.execute_script("arguments[0].click();", element)      
+        self.driver.execute_script("arguments[0].click();", element)
 
-    
+    def click_sort_dropdown(self, should_check=True):
+        element = self.wait.until(
+            EC.presence_of_element_located(DashboardLocators.SORT)
+        )
+        is_selected = self.driver.execute_script(
+            "return arguments[0].checked;", element
+        )
+        if is_selected != should_check:
+            self.driver.execute_script("arguments[0].click();", element)
+
+    def select_a_z_sort(self, text):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(DashboardLocators.A_Z_SORT)
+        )
+        self.driver.execute_script("arguments[0].value = arguments[1];", element, text)
+
+    def select_oldest_sort(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(DashboardLocators.OLDEST_SORT)
+        )
+        self.driver.execute_script("arguments[0].click();", element)

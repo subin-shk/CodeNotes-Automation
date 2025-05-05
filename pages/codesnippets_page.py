@@ -29,36 +29,6 @@ class CodeSnippetPage:
         )
         self.driver.execute_script("arguments[0].value = arguments[1];", element, title)
 
-    # def select_language(self, language):
-    #     select = Select(self.driver.find_element(By.XPATH, CodeSnippetsLocators.LANGUAGE_INPUT))
-    #     select.select_by_value(language)
-    # Locate the dropdown element
-    # dropdown_element = self.wait.until(
-    #     EC.presence_of_element_located(CodeSnippetsLocators.LANGUAGE_INPUT)
-    # )
-
-    # # Use JavaScript to select the value
-    # self.driver.execute_script(
-    #     "arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
-    #     dropdown_element,
-    #     language,
-    # )
-
-    # def select_language(self, language):
-    #     self.driver.execute_script(
-    #         "arguments[0].click();",
-    #         self.driver.find_element(*CodeSnippetsLocators.LANGUAGE_INPUT),
-    #     )
-    #     self.driver.find_element(By.XPATH, f"//*[text()='{language}']").click()
-
-    # def languauge_select(self):
-    #     element = self.driver.find_element(
-    #         By.XPATH, CodeSnippetsLocators.LANGUAGE_INPUT
-    #     )
-    #     # element.click()
-    #     element.send_keys("Kotlin")
-
-    # def select_language(self):
     def select_language(self, language):
         language_element = self.wait.until(
             EC.presence_of_element_located(CodeSnippetsLocators.LANGUAGE_INPUT)

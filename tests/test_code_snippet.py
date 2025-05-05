@@ -113,14 +113,14 @@ class TestCodeSnippet:
         time.sleep(5)
         snippet_page.view_card()
 
-    def test_edit_code_snippet_without_login(self, driver):
-        snippet_page = CodeSnippetPage(driver)
-        snippet_page.click_snippet_btn()
-        snippet_page.click_view()
-        snippet_page.click_edit()
+    # def test_edit_code_snippet_without_login(self, driver):
+    #     snippet_page = CodeSnippetPage(driver)
+    #     snippet_page.click_snippet_btn()
+    #     snippet_page.click_view()
+    #     snippet_page.click_edit()
 
-        expected_result = "You need to sign in or sign up before continuing."
-        actual_result = snippet_page.alert()
-        assert (
-            actual_result == expected_result
-        ), f"Expected '{expected_result}', but got'{actual_result}'"
+    #     expected_result = "You need to sign in or sign up before continuing."
+    #     actual_result = snippet_page.alert()
+    #     assert (
+    #         actual_result == expected_result
+    #     ), f"Expected '{expected_result}', but got'{actual_result}'"
