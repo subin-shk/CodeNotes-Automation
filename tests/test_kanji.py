@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
+# from CodeNotes_Automation.pages import kanji_page
 from pages.login_page import LoginPage
 from pages.kanji_page import KanjiPage
 from locators.codesnippets_locators import CodeSnippetsLocators
@@ -37,5 +38,14 @@ class TestKanji:
 
         assert actual == expected, f"Expected: {expected}, but got: {actual}"
 
-
-    def test_kanji_card
+    def test_order_stroke(self, driver):
+        kanji_page = KanjiPage(driver)
+        kanji_page.go_to_all_kanji()
+        kanji_page.click_kanji_card()
+        assert kanji_page.video(), "Failed: Kanji detail do not have order stroke"
+        
+    def test_kanji_mneumonics(self, driver):
+        kanji_page = KanjiPage(driver)
+        kanji_page.go_to_all_kanji()
+        kanji_page.click_kanji_card()
+        assert kanji_page.mnemonics_presence(), "Failed: Kanji detail page do not have mneumonics"

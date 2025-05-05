@@ -1,6 +1,7 @@
 from locators.kanji_locators import KanjiPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 
 class KanjiPage:
@@ -29,10 +30,11 @@ class KanjiPage:
             EC.presence_of_element_located(KanjiPageLocators.SEARCH_BUTTON)
         )
         self.driver.execute_script("arguments[0].scrollIntoView(true);", search_input)
-        self.driver.execute_script("arguments[0].value = arguments[1];", search_input, term)
+        self.driver.execute_script(
+            "arguments[0].value = arguments[1];", search_input, term
+        )
         self.driver.execute_script("arguments[0].scrollIntoView(true);", search_button)
         self.driver.execute_script("arguments[0].click();", search_button)
-
 
     def get_kanji_cards(self):
         return self.wait.until(
@@ -40,13 +42,30 @@ class KanjiPage:
         )
 
     def search_result(self):
-        result_element=self.wait.until(
+        result_element = self.wait.until(
             EC.presence_of_element_located(KanjiPageLocators.SEARCH_RESULT)
         )
         return result_element.text.strip().lower()
 
     def click_kanji_card(self):
-        self.wait.until(
-            EC.element_to_be_clickable(KanjiPageLocators.KANJI_CARDS)
-        ).click()
-        
+        cards = self.wait.until(
+            EC.presence_of_all_elements_located(KanjiPageLocators.KANJI_CARDS)
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", cards[0])
+        self.driver.execute_script("arguments[0].click();", cards[0])
+
+    def video(self):
+        try:
+            self.wait.until(
+                EC.presence_of_element_located(KanjiPageLocators.ORDER_STROKE)
+            )
+            return True
+        except TimeoutException:
+            return False
+
+    def mnemonics_presence(self):
+        try:
+            self.wait.until(EC.presence_of_element_located(KanjiPageLocators.MNEMONICS))
+            return True
+        except TimeoutException:
+            return False
