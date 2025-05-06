@@ -5,6 +5,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pages.login_page import LoginPage
 
+# bring sensitive data like email and password from dotenv
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 @pytest.fixture
 def driver():
@@ -25,7 +31,7 @@ def driver():
 def logged_in_driver(driver):
     login_page = LoginPage(driver)
     login_page.nav_login_btn()
-    login_page.enter_email("test@example.com")
-    login_page.enter_password("test123")
+    login_page.enter_email(os.getenv("EMAIL"))
+    login_page.enter_password(os.getenv("PASSWORD"))
     login_page.click_login_submit_button()
     return driver
