@@ -7,14 +7,8 @@ import time
 
 
 class TestLogin:
-    def test_valid_login(self, driver):
-        # driver, signup_page, login_page = setup
-        login_page = LoginPage(driver)
-        login_page.nav_login_btn()
-        login_page.enter_email("test@example.com")
-        login_page.enter_password("test123")
-
-        login_page.click_login_submit_button()
+    def test_valid_login(self, logged_in_driver):
+        login_page = LoginPage(logged_in_driver)
 
         expected = "Signed in successfully."
         actual = login_page.login_alert()
